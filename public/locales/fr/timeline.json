@@ -1,0 +1,22 @@
+{
+    "section": "Mon Parcours",
+    "description": "Les étapes clés de mon parcours professionnel et académique.",
+    "pr-3": {
+        "title": "Développeur Next Js(React)",
+        "date": "Jan - Avr 2025",
+        "company": "Startup tech",
+        "description": "Développement et maintenance d`applications web avec React, Next.js. Collaboration avec les équipes produit et design."
+    },
+    "pr-2": {
+        "title": "Développeur React native(ios,android)",
+        "date": "Août 2024 - today",
+        "company": "Projet interne",
+        "description": "Responsable du développement complet d’une application mobile : conception, design UI/UX, déploiement sur iOS et Android, et maintenance évolutive de la solution."
+    },
+    "pr-1": {
+        "title": "Stagiaire Développeur FullStack",
+        "date": "Août - Dec 2023",
+        "company": "Misaina incorporation",
+        "description": "Responsable d'application web complexe côté administrateur et client depuis la conception jusqu’à la réalisation et du déploiement."
+    }
+}

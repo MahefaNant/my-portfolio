@@ -1,0 +1,19 @@
+{
+    "section": "Contactez-moi",
+    "description": "Vous avez un projet ou une question ? N'hésitez pas à me contacter.",
+    "coord": {
+        "title": "Coordonnées",
+        "phone": "Téléphone",
+        "location": "Localisation",
+        "social-media": "Réseaux sociaux"
+    },
+    "form": {
+        "name" : "Nom",
+        "name-pl": "Votre nom",
+        "e-mail": "Votre@email.com",
+        "message": "Votre message...",
+        "send": "Envoyer le message",
+        "send-toast": "Message envoyé avec succès!",
+        "required": "Ce champ est requis"
+    }
+}

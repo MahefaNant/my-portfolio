@@ -1,0 +1,16 @@
+{
+    "section": "Mes Réalisations",
+    "description": "Une sélection de projets sur lesquels j'ai travaillé.",
+    "pr-3": {
+        "title": "Plateforme immobilière",
+        "description": "Une plateforme de gestion et d'échange immobilier, permettant aux particuliers et professionnels de louer, acheter ou vendre des biens tels que des appartements, villas, maisons ou terrains."
+    },
+    "pr-2": {
+        "title": "Application de diffusion audio",
+        "description": "Une application en ligne permettant d’écouter des radios en direct, ainsi que des podcasts à la demande, le tout accessible depuis n’importe quel appareil connecté."
+    },
+    "pr-1": {
+        "title": "Plateforme e-commerce complète",
+        "description": "Plateforme e-commerce avec achat de vêtements, gestion des commandes, livraisons et dashboard admin complet."
+    }
+}

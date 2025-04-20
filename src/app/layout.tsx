@@ -1,14 +1,11 @@
-// app/layout.tsx
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ui/theme-provider";
-import Navbar from "@/components/Navbar";
-const inter = Inter({ subsets: ["latin"] });
+import { I18nProvider } from "./providers/i18n-provider";
 
 export const metadata: Metadata = {
-  title: "Développeur Fullstack | Votre Nom",
-  description: "Portfolio professionnel de [Votre Nom], développeur fullstack spécialisé en...",
+  title: "Mahefa | Developer",
+  description: "Portfolio professionnel de Mahefa Nantenaina",
 };
 
 export default function RootLayout({
@@ -16,13 +13,14 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  
   return (
-    <html lang="fr" suppressHydrationWarning={true}>
-      <body className={`${inter.className} bg-background antialiased`}>
+    <html lang="en" suppressHydrationWarning={true}>
+      <body className={`bg-background antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={true}>
-          <Navbar />
-          {children}
-          {/* <Footer /> */}
+          <I18nProvider>
+            {children}
+          </I18nProvider>
         </ThemeProvider>
       </body>
     </html>
