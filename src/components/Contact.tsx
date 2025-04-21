@@ -1,67 +1,16 @@
 /* eslint-disable react/no-unescaped-entities */
 "use client";
-
 import { motion } from "framer-motion";
 import { Button } from "./ui/button";
-import { Mail, MapPin, Phone, Send } from "lucide-react";
-import { Input } from "./ui/input";
-import { Textarea } from "./ui/textarea";
-import { useForm } from "react-hook-form";
-import { toast } from "sonner";
+import { Mail, MapPin, Phone } from "lucide-react";
 import { myInfos, socialLinks } from "@/constants/me";
 import { useTranslation } from "react-i18next";
-import { useState } from "react";
-
-interface FormData {
-  name: string
-  email: string
-  message: string
-}
+import { FormContact } from "./contact/FormContact";
 
 export default function Contact() {
 
-  const [isSending, setIsSending] = useState(false);
-  const [emailSent, setEmailSent] = useState(false);
-
-
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm<FormData>();
-
-  const onSubmit = async (data: FormData) => {
-    setIsSending(true);
-    setEmailSent(false);
-
-    try {
-      const res = await fetch("/api/send", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
-
-      if (res.ok) {
-        setEmailSent(true);
-        toast.success(t("form.send-toast") || "Message sent successfully!");
-        reset();
-      } else {
-        toast.error("An error occurred while sending.");
-      }
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    } catch (error) {
-      toast.error("Network error.");
-    } finally {
-      setIsSending(false);
-    }
-  };
-
-
-
-  const {t} = useTranslation("contact");
+  
+  const { t } = useTranslation("contact");
 
   return (
     <section id="contact" className="py-20 bg-muted/50">
@@ -151,81 +100,8 @@ export default function Contact() {
             </div>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-          >
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium mb-1">
-                  {t("form.name")}
-                </label>
-                <Input
-                  id="name"
-                  placeholder={t("form.name-pl")}
-                  {...register("name", { required: t("form.required") })}
-                />
-                {errors.name && (
-                  <p className="mt-1 text-sm text-destructive">{errors.name.message}</p>
-                )}
-              </div>
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium mb-1">
-                  E-mail
-                </label>
-                <Input
-                  id="email"
-                  type="email"
-                  placeholder={t("form.e-mail")}
-                  {...register("email", {
-                    required: t("form.e-mail"),
-                    pattern: {
-                      value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                      message: "Adresse email invalide",
-                    },
-                  })}
-                />
-                {errors.email && (
-                  <p className="mt-1 text-sm text-destructive">{errors.email.message}</p>
-                )}
-              </div>
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium mb-1">
-                  Message
-                </label>
-                <Textarea
-                  id="message"
-                  rows={5}
-                  placeholder={t("form.message")}
-                  {...register("message", { required: t("form.required") })}
-                />
-                {errors.message && (
-                  <p className="mt-1 text-sm text-destructive">{errors.message.message}</p>
-                )}
-              </div>
-              <Button type="submit" className="w-full" disabled={isSending}>
-                {isSending ? (
-                  <>
-                    <span>{t("form.send-loading")}</span>
-                    <Send className="ml-2 h-4 w-4 animate-spin" />
-                  </>
-                ) : emailSent ? (
-                  <>
-                    <span>{t("form.email-send")}</span>
-                    <Send className="ml-2 h-4 w-4 text-green-500" />
-                  </>
-                ) : (
-                  <>
-                    <span>{t("form.send") ?? "Send"}</span>
-                    <Send className="ml-2 h-4 w-4" />
-                  </>
-                )}
-              </Button>
+          <FormContact />
 
-            </form>
-          </motion.div>
         </div>
       </div>
     </section>
