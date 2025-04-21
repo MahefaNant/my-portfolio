@@ -1,8 +1,7 @@
 "use client";
 
-import Link from "next/link";
 import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { MenuButton } from "./navbar/MenuButton";
@@ -18,13 +17,22 @@ export default function Navbar() {
 
   const { t } = useTranslation("navigation");
 
-  const links = [
-    { name: t("home"), href: "#home" },
-    { name: t("skills"), href: "#skills" },
-    { name: t("timeline"), href: "#timeline" },
-    { name: t("projects"), href: "#projects" },
-    { name: t("contact"), href: "#contact" },
-  ];
+  const links = useMemo(() => [
+    { name: t("home"), href: "home" },
+    { name: t("skills"), href: "skills" },
+    { name: t("timeline"), href: "timeline" },
+    { name: t("education"), href: "education" },
+    { name: t("projects"), href: "projects" },
+    { name: t("contact"), href: "contact" },
+  ], [t]);
+
+  const handleClick = (section: string) => {
+    setActiveSection(section);
+    const element = document.getElementById(section);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   useEffect(() => {
     setMounted(true);
@@ -32,17 +40,16 @@ export default function Navbar() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 10);
       
-      const sections = links.map(link => link.href.substring(1));
       const scrollPosition = window.scrollY + 100;
       
-      for (const section of sections) {
-        const element = document.getElementById(section);
+      for (const link of links) {
+        const element = document.getElementById(link.href);
         if (element) {
           const offsetTop = element.offsetTop;
           const offsetHeight = element.offsetHeight;
           
           if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-            setActiveSection(section);
+            setActiveSection(link.href);
             break;
           }
         }
@@ -53,20 +60,7 @@ export default function Navbar() {
     window.addEventListener("scroll", handleScroll);
     
     return () => window.removeEventListener("scroll", handleScroll);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  useEffect(() => {
-    const handleHashChange = () => {
-      const hash = window.location.hash.substring(1);
-      if (hash && hash !== activeSection) {
-        setActiveSection(hash);
-      }
-    };
-
-    window.addEventListener("hashchange", handleHashChange);
-    return () => window.removeEventListener("hashchange", handleHashChange);
-  }, [activeSection]);
+  }, [links]);
 
   if (!mounted) return null;
 
@@ -81,11 +75,15 @@ export default function Navbar() {
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-8 py-4 flex justify-between items-center">
         <div className="flex">
-          <MenuButton links={links} activeSection={activeSection} setActiveSection={setActiveSection} />
-          <Link 
-            href="#home" 
+          <MenuButton 
+            links={links.map(l => ({...l, href: `#${l.href}`}))} 
+            activeSection={activeSection} 
+            setActiveSection={setActiveSection}
+            handleClick={handleClick}
+          />
+          <button
+            onClick={() => handleClick("home")}
             className="flex items-center gap-2"
-            onClick={() => setActiveSection("home")}
           >
             <motion.div
               whileHover={{ rotate: 360 }}
@@ -101,37 +99,32 @@ export default function Navbar() {
                 priority={true}
                 unoptimized={true}
               />
-              {/* <span className={`${theme === "dark" ? "text-black" : "text-white"} font-bold text-xl`}>M</span> */}
             </motion.div>
             <span className="font-bold text-xl hidden sm:inline-block">Mahefa</span>
-          </Link>
+          </button>
         </div>
         
         <div className="flex items-center gap-6">
           <ul className="hidden md:flex items-center gap-8">
-            {links.map((link) => {
-              const section = link.href.substring(1);
-              return (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className={`relative px-2 py-1 transition-colors hover:text-primary ${
-                      activeSection === section ? "text-primary" : "text-foreground"
-                    }`}
-                    onClick={() => setActiveSection(section)}
-                  >
-                    {link.name}
-                    {activeSection === section && (
-                      <motion.span
-                        layoutId="nav-underline"
-                        className="absolute left-0 top-full h-0.5 w-full bg-primary"
-                        transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                      />
-                    )}
-                  </Link>
-                </li>
-              );
-            })}
+            {links.map((link) => (
+              <li key={link.name}>
+                <button
+                  className={`relative px-2 py-1 transition-colors hover:text-primary ${
+                    activeSection === link.href ? "text-primary" : "text-foreground"
+                  }`}
+                  onClick={() => handleClick(link.href)}
+                >
+                  {link.name}
+                  {activeSection === link.href && (
+                    <motion.span
+                      layoutId="nav-underline"
+                      className="absolute left-0 top-full h-0.5 w-full bg-primary"
+                      transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                    />
+                  )}
+                </button>
+              </li>
+            ))}
           </ul>
 
           <LanguageButton />

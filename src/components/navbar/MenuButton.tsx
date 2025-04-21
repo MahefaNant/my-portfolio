@@ -4,23 +4,22 @@ import {
   DrawerClose,
   DrawerContent,
   DrawerDescription,
-  DrawerFooter,
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
 import { Button } from "../ui/button";
-import Link from "next/link";
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 import { Separator } from "../ui/separator";
 
 interface IMenuButtonProps {
     links: { name: string, href: string }[];
     activeSection: string;
     setActiveSection: (section: string) => void;
+    handleClick: (section: string) => void;
 }
 
-export function MenuButton({links, activeSection, setActiveSection}: IMenuButtonProps) {
+export function MenuButton({links, activeSection, setActiveSection, handleClick}: IMenuButtonProps) {
   return(
     <div className="block sm:hidden">
       <Drawer>
@@ -36,21 +35,19 @@ export function MenuButton({links, activeSection, setActiveSection}: IMenuButton
               <DrawerDescription>Navigation</DrawerDescription>
             </DrawerHeader>
             <Separator className="my-4" />
-            <DrawerFooter>
+            <div className="p-4 flex flex-col gap-4">
               {links.map((link) => {
                 const section = link.href.substring(1);
                 return (
-                  <DrawerClose  key={link.name} asChild={true}>
-                    <Link
-                      href={link.href}
-                      className={`text-center relative px-2 py-1 transition-colors hover:text-primary ${
+                  <DrawerClose key={link.name} asChild={true}>
+                    <button
+                      className={`text-left relative px-2 py-1 transition-colors hover:text-primary ${
                         activeSection === section ? "text-primary" : "text-foreground"
                       }`}
                       onClick={() => {
                         setActiveSection(section);
-
-                      }
-                      }
+                        handleClick(section);
+                      }}
                     >
                       {link.name}
                       {activeSection === section && (
@@ -60,12 +57,11 @@ export function MenuButton({links, activeSection, setActiveSection}: IMenuButton
                           transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                         />
                       )}
-                    </Link>
+                    </button>
                   </DrawerClose>
-                  
                 );
               })}
-            </DrawerFooter>
+            </div>
           </div>
         </DrawerContent>
       </Drawer>

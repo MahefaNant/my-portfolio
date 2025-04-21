@@ -10,6 +10,7 @@ import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { myInfos, socialLinks } from "@/constants/me";
 import { useTranslation } from "react-i18next";
+import { useState } from "react";
 
 interface FormData {
   name: string
@@ -18,6 +19,11 @@ interface FormData {
 }
 
 export default function Contact() {
+
+  const [isSending, setIsSending] = useState(false);
+  const [emailSent, setEmailSent] = useState(false);
+
+
   const {
     register,
     handleSubmit,
@@ -26,10 +32,34 @@ export default function Contact() {
   } = useForm<FormData>();
 
   const onSubmit = async (data: FormData) => {
-    console.log(data);
-    toast.success(t("form.send-toast"));
-    reset();
+    setIsSending(true);
+    setEmailSent(false);
+
+    try {
+      const res = await fetch("/api/send", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (res.ok) {
+        setEmailSent(true);
+        toast.success(t("form.send-toast") || "Message sent successfully!");
+        reset();
+      } else {
+        toast.error("An error occurred while sending.");
+      }
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    } catch (error) {
+      toast.error("Network error.");
+    } finally {
+      setIsSending(false);
+    }
   };
+
+
 
   const {t} = useTranslation("contact");
 
@@ -148,9 +178,9 @@ export default function Contact() {
                 <Input
                   id="email"
                   type="email"
-                  placeholder={t("form.email")}
+                  placeholder={t("form.e-mail")}
                   {...register("email", {
-                    required: t("form.email"),
+                    required: t("form.e-mail"),
                     pattern: {
                       value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
                       message: "Adresse email invalide",
@@ -169,16 +199,31 @@ export default function Contact() {
                   id="message"
                   rows={5}
                   placeholder={t("form.message")}
-                  {...register("message", { required: "Ce champ est requis" })}
+                  {...register("message", { required: t("form.required") })}
                 />
                 {errors.message && (
                   <p className="mt-1 text-sm text-destructive">{errors.message.message}</p>
                 )}
               </div>
-              <Button type="submit" className="w-full">
-                {t("form.send")??""}
-                <Send className="ml-2 h-4 w-4" />
+              <Button type="submit" className="w-full" disabled={isSending}>
+                {isSending ? (
+                  <>
+                    <span>{t("form.send-loading")}</span>
+                    <Send className="ml-2 h-4 w-4 animate-spin" />
+                  </>
+                ) : emailSent ? (
+                  <>
+                    <span>{t("form.email-send")}</span>
+                    <Send className="ml-2 h-4 w-4 text-green-500" />
+                  </>
+                ) : (
+                  <>
+                    <span>{t("form.send") ?? "Send"}</span>
+                    <Send className="ml-2 h-4 w-4" />
+                  </>
+                )}
               </Button>
+
             </form>
           </motion.div>
         </div>

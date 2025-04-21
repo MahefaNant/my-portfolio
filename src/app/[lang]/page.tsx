@@ -9,6 +9,8 @@ import Footer from "@/components/Footer";
 import useDocumentReadyState from "@/hooks/useDocumentReadyState";
 import { useEffect, useState } from "react";
 import Loading from "@/components/Loading";
+import Education from "@/components/Education";
+import { Toaster } from "sonner";
 
 export default function Home() {
 
@@ -33,10 +35,13 @@ export default function Home() {
         <Hero />
         <Skills />
         <Timeline />
+        <Education />
         <Projects />
         <Contact />
       </main>
       <Footer />
+
+      <Toaster />
     </>
     
   );

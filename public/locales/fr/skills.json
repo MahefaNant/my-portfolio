@@ -3,5 +3,6 @@
     "description": "Technologies et outils que je maîtrise pour créer des solutions performantes",
     "bdd": "Bases de données",
     "ci-cd": "CI/CD & Déploiement",
-    "environment": "Environnement"
+    "environment": "Environnement",
+    "others": "Autres"
 }

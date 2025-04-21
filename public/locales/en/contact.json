@@ -14,6 +14,8 @@
         "message": "Your Message...",
         "send": "Send Message",
         "send-toast": "Message sent successfully!",
-        "required": "This field is required"
+        "required": "This field is required",
+        "send-loading": "Sending...",
+        "email-send": "Sent !"
     }
 }

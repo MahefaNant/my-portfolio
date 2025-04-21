@@ -15,7 +15,7 @@ i18n
     fallbackLng: defaultLocale,
     supportedLngs,
     preload: [...supportedLngs],
-    ns: ["navigation", "common", "hero", "skills", "timeline", "projects", "contact"],
+    ns: ["navigation", "common", "hero", "skills", "timeline", "projects", "education", "contact"],
     defaultNS: "common",
     backend: {
       loadPath: "/locales/{{lng}}/{{ns}}.json",

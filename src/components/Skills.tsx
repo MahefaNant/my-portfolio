@@ -4,11 +4,14 @@
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { 
-  SiSymfony, SiNodedotjs, SiSpring, SiLaravel,SiSharp,
+  SiSymfony, SiNodedotjs, SiSpring, SiLaravel,SiDotnet,
   SiReact, SiNextdotjs, SiTypescript, SiTailwindcss, SiJavascript,
   SiMongodb, SiPostgresql, SiMysql,
-  SiDocker, SiGit, SiGithubactions, SiIntellijidea, SiPostman,SiLinux
+  SiDocker, SiGit, SiGithubactions, SiIntellijidea, SiPostman,SiLinux,
+  SiCanva, SiFigma, SiAppstore
 } from "react-icons/si";
+import { IoLogoGooglePlaystore } from "react-icons/io5";
+
 
 export default function Skills() {
 
@@ -23,7 +26,7 @@ export default function Skills() {
         { name: "Laravel", icon: SiLaravel },
         { name: "Node.js", icon: SiNodedotjs },
         { name: "Spring", icon: SiSpring },
-        { name: "Asp.Net", icon: SiSharp }
+        { name: "Asp.Net", icon: SiDotnet }
       ]
     },
     {
@@ -63,6 +66,16 @@ export default function Skills() {
         { name: "Git", icon: SiGit },
         { name: "Postman", icon: SiPostman },
         { name: "WSL", icon: SiLinux }
+      ]
+    },
+    {
+      name: t("others"),
+      color: "from-rose-500 to-pink-600",
+      skills: [
+        { name: "Canva", icon: SiCanva },
+        { name: "Figma", icon: SiFigma },
+        { name: "AppStore", icon: SiAppstore },
+        { name: "PlayStore", icon: IoLogoGooglePlaystore },
       ]
     }
   ];
