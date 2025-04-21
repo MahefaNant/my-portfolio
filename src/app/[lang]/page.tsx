@@ -38,6 +38,25 @@ export default function Home() {
         <Education />
         <Projects />
         <Contact />
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              "name": "Mahefa Nantenaina",
+              "jobTitle": "Développeur Fullstack",
+              "url": process.env.NEXT_PUBLIC_SITE_URL,
+              "sameAs": [
+                "https://www.linkedin.com/in/mahefa-nantenaina-419a98271/", 
+                "https://github.com/MahefaNant"
+              ],
+              "skills": ["React", "Next.js", "TypeScript", "Java", "PHP", "Spring", "Node", "C#"]
+            })
+          }}
+        />
+
       </main>
       <Footer />
 

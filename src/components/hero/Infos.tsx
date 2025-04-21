@@ -19,10 +19,11 @@ export function Info () {
       </motion.div>
 
       <motion.h1
+        id="main-heading"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.1 }}
-        className="text-4xl md:text-6xl font-bold tracking-tight"
+        className="sr-only text-4xl md:text-6xl font-bold tracking-tight"
       >
         <span className="bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
           [Mahefa Nantenaina]
