@@ -83,6 +83,7 @@ export function FormContact () {
             id="name"
             placeholder={t("form.name-pl")}
             {...register("name", { required: t("form.required") })}
+            className="bg-background border border-border text-foreground placeholder:text-muted-foreground focus-visible:ring-2 focus-visible:ring-primary"
           />
           {errors.name && (
             <p className="mt-1 text-sm text-destructive">{errors.name.message}</p>
@@ -90,7 +91,7 @@ export function FormContact () {
         </div>
         <div>
           <label htmlFor="email" className="block text-sm font-medium mb-1">
-                  E-mail
+            E-mail
           </label>
           <Input
             id="email"
@@ -103,6 +104,7 @@ export function FormContact () {
                 message: "Adresse email invalide",
               },
             })}
+            className="bg-background border border-border text-foreground placeholder:text-muted-foreground focus-visible:ring-2 focus-visible:ring-primary"
           />
           {errors.email && (
             <p className="mt-1 text-sm text-destructive">{errors.email.message}</p>
@@ -110,13 +112,15 @@ export function FormContact () {
         </div>
         <div>
           <label htmlFor="message" className="block text-sm font-medium mb-1">
-                  Message
+            Message
           </label>
           <Textarea
             id="message"
             rows={5}
             placeholder={t("form.message")}
             {...register("message", { required: t("form.required") })}
+            className="bg-background border border-border text-foreground placeholder:text-muted-foreground focus-visible:ring-2 focus-visible:ring-primary"
+
           />
           {errors.message && (
             <p className="mt-1 text-sm text-destructive">{errors.message.message}</p>

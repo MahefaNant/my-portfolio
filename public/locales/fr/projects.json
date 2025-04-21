@@ -12,5 +12,18 @@
     "pr-1": {
         "title": "Plateforme e-commerce complète",
         "description": "Plateforme e-commerce avec achat de vêtements, gestion des commandes, livraisons et dashboard admin complet."
+    },
+     "portfolio": {
+        "title": "Mon Portfolio",
+        "description": "Technologies & fonctionnalités",
+        "techno": "Développé avec :",
+        "v": "Versionnage avec",
+        "deploye": "Déployé sur",
+        "form": "Formulaire de contact avec :",
+        "email": "envoi d'e-mail",
+        "security": "pour la sécurité",
+        "language": "Support multilingue :",
+        "theme": "Thème clair & sombre : ",
+        "animation": "Animations fluides grâce à"
     }
 }

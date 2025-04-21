@@ -6,6 +6,7 @@ import { useState } from "react";
 import { ProjectCard } from "./projects/ProjectCard";
 import { ImagesLook } from "./projects/ImagesLook";
 import { useTranslation } from "react-i18next";
+import PortfolioFeatureCard from "./projects/PortfolioFeatureCard";
 
 export interface IProject {
   id: number;
@@ -27,7 +28,7 @@ export default function Projects() {
       id: 3,
       title: t("pr-3.title"),
       description: t("pr-3.description"),
-      tags: ["Next.js", "Symfony", "Stripe", "Tailwind CSS"],
+      tags: ["Next.js", "Typescript", "Docker", "Github", "MongoDB"],
       images: ["/static/images/oa/oa1.png", "/static/images/oa/oa2.png", "/static/images/oa/oa3.png", "/static/images/oa/oa4.png", "/static/images/oa/oa5.png", "/static/images/oa/oa6.png"],
       isPrivate: true
     },
@@ -35,7 +36,7 @@ export default function Projects() {
       id: 2,
       title: t("pr-2.title"),
       description: t("pr-2.description"),
-      tags: ["React", "Node.js", "MongoDB", "TypeScript"],
+      tags: ["React Native", "Typescript", "Azuracast","sqlite"],
       images: ["/static/images/hopefy.png"],
       liveUrl: "https://play.google.com/store/apps/details?id=com.hopefy.radiomg",
       isPrivate: true
@@ -44,7 +45,7 @@ export default function Projects() {
       id: 1,
       title: t("pr-1.title"),
       description: t("pr-1.description"),
-      tags: ["Next.js", "Framer Motion", "Tailwind CSS"],
+      tags: ["Asp.net", "C#", "Api", "Postgresql"],
       images: ["/static/images/os/os1.png", "/static/images/os/os2.png", "/static/images/os/os3.png", "/static/images/os/os4.png", "/static/images/os/os5.png", "/static/images/os/os6.png"],
       isPrivate: true
     }
@@ -87,7 +88,7 @@ export default function Projects() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-16 justify-center"
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">{t("section")}</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
@@ -110,6 +111,9 @@ export default function Projects() {
             />
           ))}
         </div>
+
+        <PortfolioFeatureCard />
+
       </div>
 
       <ImagesLook 

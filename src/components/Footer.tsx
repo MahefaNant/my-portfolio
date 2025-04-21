@@ -113,6 +113,9 @@ export default function Footer() {
           <p className="text-sm text-muted-foreground">
             © {new Date().getFullYear()} Mahefa Nantenaina. {t("common:copyright")}
           </p>
+          <p className="text-sm text-muted-foreground">
+            {t("common:info")}
+          </p>
           <div className="flex gap-4">
             <motion.a
               href={myInfos.linkedin}

@@ -5,5 +5,6 @@
     "private": "Private",
     "see": "See",
     "of" : "of",
-    "copyright":"All rights reserved."
+    "copyright":"All rights reserved.",
+    "info": "This website was built with NextJS and deployed on Vercel"
 }
