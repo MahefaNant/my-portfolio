@@ -11,7 +11,6 @@ function isSupportedLocale(locale: string): locale is SupportedLocale {
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // Exclure les fichiers statiques et le sitemap
   if (
     pathname.startsWith("/_next") ||
     pathname.includes("/api/") ||

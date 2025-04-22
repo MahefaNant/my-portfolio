@@ -1,7 +1,6 @@
-import { NextRequest } from "next/server";
 
-export async function GET(req: NextRequest) {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+export async function GET() {
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://mahefa.vercel.app/";
   
   const sitemapEntries = [
     {
@@ -22,7 +21,6 @@ export async function GET(req: NextRequest) {
       changeFrequency: "weekly" as const,
       priority: 1,
     },
-    // Ajoutez d'autres URLs ici
   ];
 
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
