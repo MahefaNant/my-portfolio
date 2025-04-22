@@ -1,23 +1,27 @@
 {
+  "version": 2,
   "routes": [
     {
-      "src": "/sitemap.xml",
+      "src": "/sitemap\\.xml",
       "headers": {
         "Content-Type": "application/xml"
       },
       "continue": true
     },
     {
-      "src": "/en/sitemap.xml",
+      "src": "/en/sitemap\\.xml",
       "dest": "/sitemap.xml",
       "headers": {
         "Content-Type": "application/xml"
       }
+    },
+    {
+      "src": "/(.*)",
+      "headers": {
+        "X-Content-Type-Options": "nosniff",
+        "Cache-Control": "public, max-age=31536000, immutable"
+      },
+      "continue": true
     }
-  ],
-  "overrides": {
-    "sitemap.xml": {
-      "contentType": "application/xml"
-    }
-  }
+  ]
 }
