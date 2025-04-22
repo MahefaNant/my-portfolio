@@ -16,13 +16,21 @@ const STATIC_PATHS = [
 ];
 
 const STATIC_EXTENSIONS = [
-  ".png", ".jpg", ".jpeg", ".webp", 
+  ".png", ".jpg", ".jpeg", ".webp",
   ".json", ".ico", ".svg", ".woff", ".woff2"
 ];
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const url = request.nextUrl.clone();
+
+  if (pathname === "/en/sitemap.xml") {
+    url.pathname = "/sitemap.xml";
+    const response = NextResponse.rewrite(url);
+    response.headers.set("Content-Type", "application/xml");
+    response.headers.set("Cache-Control", "public, max-age=31536000, immutable");
+    return response;
+  }
 
   const isStaticPath = STATIC_PATHS.includes(pathname);
   const isStaticExtension = STATIC_EXTENSIONS.some(ext => pathname.endsWith(ext));
@@ -33,20 +41,23 @@ export function middleware(request: NextRequest) {
     pathname.includes("/api/") ||
     isStaticFile
   ) {
-    if (pathname === "/en/sitemap.xml") {
-      url.pathname = "/sitemap.xml";
-      return NextResponse.rewrite(url);
+    const response = NextResponse.next();
+    if (isStaticFile) {
+      response.headers.set("Cache-Control", "public, max-age=31536000, immutable");
     }
-    return NextResponse.next();
+    return response;
   }
 
   const pathLocale = pathname.split("/")[1];
+  
   if (!isSupportedLocale(pathLocale)) {
     url.pathname = `/${defaultLocale}${pathname}`;
     return NextResponse.redirect(url);
   }
 
-  return NextResponse.next();
+  const response = NextResponse.next();
+  response.headers.set("X-Content-Type-Options", "nosniff");
+  return response;
 }
 
 export const config = {

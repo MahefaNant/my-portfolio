@@ -16,15 +16,10 @@ const nextConfig = {
           {
             key: "Content-Type",
             value: "application/xml; charset=utf-8"
-          }
-        ]
-      },
-      {
-        source: "/en/sitemap.xml",
-        headers: [
+          },
           {
-            key: "Content-Type",
-            value: "application/xml; charset=utf-8"
+            key: "X-Content-Type-Options",
+            value: "nosniff"
           }
         ]
       }
