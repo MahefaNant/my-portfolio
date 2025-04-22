@@ -1,0 +1,51 @@
+{
+  "extends": [
+    "next/core-web-vitals",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "@typescript-eslint",
+    "react"
+  ],
+  "rules": {
+    // React rules
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-fragments": ["warn", "syntax"],
+    "react/no-unescaped-entities": "warn",
+    "react/prop-types": "off",
+    "react/jsx-boolean-value": ["warn", "always"],
+    
+    // TypeScript rules
+    "@typescript-eslint/no-unused-vars": [
+      "warn",
+      { 
+        "argsIgnorePattern": "^_",
+        "varsIgnorePattern": "^_",
+        "caughtErrorsIgnorePattern": "^_"
+      }
+    ],
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/no-explicit-any": "warn",
+    "@typescript-eslint/consistent-type-definitions": ["warn", "interface"],
+    
+    // General rules
+    "no-console": ["warn", { "allow": ["warn", "error"] }],
+    "import/no-anonymous-default-export": "off",
+    "quotes": ["warn", "double", { "avoidEscape": true, "allowTemplateLiterals": true }],
+    "semi": ["warn", "always"],
+    "indent": ["warn", 2, { "SwitchCase": 1 }],
+    "jsx-quotes": ["warn", "prefer-double"]
+  },
+  "ignorePatterns": [
+    ".next/**",
+    "node_modules/**",
+    "**/*.d.ts",
+    "**/*.js"
+  ],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
+}
