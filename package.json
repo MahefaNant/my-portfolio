@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint --fix --no-cache"
+    "lint": "next lint --fix --no-cache",
+    "postbuild": "next-sitemap"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.7",
