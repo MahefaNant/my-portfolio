@@ -15,22 +15,26 @@ import { Toaster } from "sonner";
 export default function Home() {
 
   const isReady = useDocumentReadyState();
-  const [showLoading, setShowLoading] = useState(true);
+
+  const [showNavbar, setShowNavbar] = useState(false);
 
   useEffect(() => {
     if (isReady) {
-      const timeout = setTimeout(() => setShowLoading(false), 2000);
-      return () => clearTimeout(timeout);
+      const timer = setTimeout(() => {
+        setShowNavbar(true);
+      }, 2000); 
+      return () => clearTimeout(timer);
     }
   }, [isReady]);
 
-  if (showLoading) {
+  if (!isReady) {
     return <Loading />;
   }
 
   return (
     <>
-      <Navbar />
+      {showNavbar ? <Navbar /> : <Loading />} 
+      
       <main className="overflow-x-hidden">
         <Hero />
         <Skills />
