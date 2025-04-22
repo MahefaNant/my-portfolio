@@ -24,7 +24,7 @@ export function AvatarSection() {
           fill={true}
           className="object-cover"
           priority={true}
-          unoptimized={true}
+          sizes="100vh"
         />
       </div>
           

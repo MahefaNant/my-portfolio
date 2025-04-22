@@ -36,7 +36,7 @@ export default function Footer() {
               <motion.div 
                 whileHover={{ rotate: 360 }}
                 transition={{ duration: 0.6 }}
-                className="w-8 h-8 rounded-full flex items-center justify-center overflow-hidden"
+                className="relative w-8 h-8 rounded-full flex items-center justify-center overflow-hidden"
               >
                 <Image
                   src="/static/images/mahefa-logo.png"
@@ -44,7 +44,6 @@ export default function Footer() {
                   width={32}
                   height={32}
                   priority={true}
-                  unoptimized={true}
                 />
               </motion.div>
               <span className="font-bold">Mahefa</span>

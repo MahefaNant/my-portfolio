@@ -97,7 +97,6 @@ export default function Navbar() {
                 width={100}
                 height={100}
                 priority={true}
-                unoptimized={true}
               />
             </motion.div>
             <span className="font-bold text-xl hidden sm:inline-block">Mahefa</span>

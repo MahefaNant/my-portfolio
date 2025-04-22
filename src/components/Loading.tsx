@@ -35,9 +35,10 @@ export default function Loading() {
               src="/static/images/mahefa-logo.png"
               alt="MAHEFA"
               className="object-cover"
-              fill={true}
               priority={true}
-              unoptimized={true}
+              width={100}
+              height={100}
+              sizes="100vh"
             />
           </motion.div>
 

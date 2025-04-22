@@ -66,7 +66,8 @@ export function ImagesLook({lightboxOpen, setLightboxOpen, currentProject, curre
                     alt={`${currentProject.title} - Image ${idx + 1}`}
                     fill={true}
                     className="object-contain"
-                    unoptimized={true}
+                    priority={true}
+                    sizes="100vh"
                   />
                 </motion.div>
               ))}

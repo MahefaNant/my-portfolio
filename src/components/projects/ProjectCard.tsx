@@ -60,7 +60,8 @@ export function ProjectCard({project,index,setCurrentImageIndex,setLightboxOpen,
                   alt={`${project.title} - Image ${idx + 1}`}
                   fill={true}
                   className="object-cover"
-                  unoptimized={true}
+                  priority={true}
+                  sizes="100vh"
                 />
               </motion.div>
             ))}
