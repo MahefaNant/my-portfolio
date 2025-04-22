@@ -1,9 +1,14 @@
 /* eslint-disable react/no-unescaped-entities */
 "use client";
-import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import dynamic from "next/dynamic";
+
+const ArrowRight = dynamic(
+  () => import("lucide-react").then((mod) => mod.ArrowRight),
+  { ssr: false }
+);
 
 export default function NotFound() {
   return (
