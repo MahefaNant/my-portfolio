@@ -1,0 +1,10 @@
+{
+    "en": "Anglais",
+    "fr": "Français",
+    "private-pr": "Projet privé",
+    "private": "Privé",
+    "see": "Voir",
+    "of" : "sur",
+    "copyright":"Tous droits réservés.",
+    "info": "Ce site Web a été créé avec NextJS et déployé sur Vercel"
+}

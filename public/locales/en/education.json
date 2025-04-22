@@ -1,0 +1,34 @@
+{
+    "section": "Training & Certificates",
+    "description": "My continuous learning journey to improve my skills.",
+    "description2": "I continue to train regularly on new technologies.",
+    "ed-4": {
+        "title": "Computer Science",
+        "institution": "IT University",
+        "description": "Bachelor's degree in computer science, development option at IT University (approved).",
+        "year": "2024",
+        "badge": "Diploma"
+    },
+    "ed-3": {
+        "title": "English courses",
+        "institution": "ITTI Madagascar",
+        "description": "Certificate of Superior Level English | International Tesol Training Institute - Spoken English ( ITTI) Madagascar.",
+        "year": "2024",
+        "badge": "Certified"
+    },
+    "ed-2": {
+        "title": "Master Guide certificate",
+        "institution": "Seventh day adventist Church",
+        "description": "SOUTHERN AFRICA-INDIAN ocean division Youth ministries departement.",
+        "year": "2024",
+        "badge": "Certified"
+    },
+    "ed-1": {
+        "title": "C# with Microsoft",
+        "institution": "freeCodeCamp",
+        "description": "Developer Certification, Successful Completion of Foundational C# with Microsoft",
+        "year": "2024",
+        "badge": "Certified"
+    }
+
+}

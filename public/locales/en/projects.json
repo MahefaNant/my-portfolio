@@ -1,0 +1,29 @@
+{
+    "section": "My Achievements",
+    "description": "A selection of projects I have worked on.",
+    "pr-3": {
+        "title": "Real estate platform",
+        "description": "A real estate management and exchange platform, allowing individuals and professionals to rent, buy or sell properties such as apartments, villas, houses or land."
+    },
+    "pr-2": {
+        "title": "Audio streaming application",
+        "description": "An online application that allows you to listen to live radio stations and podcasts on demand, all accessible from any connected device."
+    },
+    "pr-1": {
+        "title": "Complete e-commerce platform",
+        "description": "E-commerce platform with clothing purchasing, order management, deliveries and a complete admin dashboard."
+    },
+   "portfolio": {
+        "title": "My Portfolio",
+        "description": "Technologies & Features",
+        "techno": "Developed with :",
+        "v": "Versioning with",
+        "deploye": "Deployed on",
+        "form": "Contact form with :",
+        "email": "sending email",
+        "security": "for security",
+        "language": "Multilingual support :",
+        "theme": "Light & Dark Theme :",
+        "animation": "Smooth animations thanks to"
+    }
+}

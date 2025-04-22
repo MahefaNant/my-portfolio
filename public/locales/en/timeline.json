@@ -1,0 +1,22 @@
+{
+    "section": "Timeline",
+    "description": "The key stages of my professional and academic career.",
+    "pr-3": {
+        "title": "Next Js (React) Developer",
+        "date": "Jan - Apr 2025",
+        "company": "Tech startup",
+        "description": "Development and maintenance of web applications with React and Next.js. Collaboration with product and design teams."
+    },
+    "pr-2": {
+        "title": "React Native Developer (iOS, Android)",
+        "date": "August 2024 - today",
+        "company": "Internal project",
+        "description": "Responsible for the complete development of a mobile application: design, UI/UX design, deployment on iOS and Android, and scalable maintenance of the solution."
+    },
+    "pr-1": {
+        "title": "FullStack Developer Intern",
+        "date": "August - December 2023",
+        "company": "Misaina incorporation",
+        "description": "Responsible for complex web applications on the administrator and client side from design to implementation and deployment."
+    }
+}

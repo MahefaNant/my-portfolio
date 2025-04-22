@@ -1,0 +1,21 @@
+{
+    "section": "Contact Me",
+    "description": "Do you have a project or a question? Don't hesitate to contact me.",
+    "coord": {
+        "title": "Contact Information",
+        "phone": "Phone",
+        "location": "Location",
+        "social-media": "Social networks"
+    },
+    "form": {
+        "name" : "Name",
+        "name-pl": "Your Name",
+        "e-mail": "Your@email.com",
+        "message": "Your Message...",
+        "send": "Send Message",
+        "send-toast": "Message sent successfully!",
+        "required": "This field is required",
+        "send-loading": "Sending...",
+        "email-send": "Sent !"
+    }
+}
