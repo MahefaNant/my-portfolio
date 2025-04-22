@@ -1,8 +1,7 @@
-/** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'https://mahefa.vercel.app/',
+  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'https://mahefa.vercel.app',
   generateRobotsTxt: true,
-  exclude: ['/404', '/server-sitemap.xml'],
+  exclude: ['/404'],
   robotsTxtOptions: {
     policies: [
       {
@@ -15,25 +14,8 @@ module.exports = {
     ],
   },
   transform: async (config, path) => {
-    const locales = ['fr', 'en'];
-    const paths = [];
-
-    if (path === '/') {
-      for (const locale of locales) {
-        paths.push({
-          loc: `${config.siteUrl}/${locale}`,
-          changefreq: locale === 'fr' ? 'weekly' : 'monthly',
-          priority: 1,
-          lastmod: new Date().toISOString(),
-        });
-      }
-      paths.push({
-        loc: config.siteUrl,
-        changefreq: 'yearly',
-        priority: 1,
-        lastmod: new Date().toISOString(),
-      });
-      return paths;
+    if (path === '/sitemap.xml') {
+      return null;
     }
 
     return {

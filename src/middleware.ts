@@ -8,19 +8,27 @@ function isSupportedLocale(locale: string): locale is SupportedLocale {
   return supportedLngs.includes(locale as SupportedLocale);
 }
 
+const staticExtensions = [".png", ".jpg", ".jpeg", ".webp", ".json", ".ico", ".svg", ".woff", ".woff2"];
+
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
+  
+  const isStaticFile = staticExtensions.some((ext) => pathname.endsWith(ext));
 
   if (
     pathname.startsWith("/_next") ||
     pathname.includes("/api/") ||
-    /\.(png|jpg|jpeg|webp|json|ico|svg|woff2?|xml|txt)$/i.test(pathname) ||
-    pathname === "/robots.txt" ||
-    pathname === "/sitemap.xml" ||
-    pathname === "/favicon.ico" ||
-    pathname === "/googled80e1742b77bf486.html"
+    isStaticFile ||
+    ["/robots.txt", "/sitemap.xml", "/favicon.ico", "/googled80e1742b77bf486.html"]
+      .includes(pathname)
   ) {
     return NextResponse.next();
+  }
+
+  if (pathname === "/sitemap.xml" || pathname === "/en/sitemap.xml") {
+    const url = request.nextUrl.clone();
+    url.pathname = "/sitemap.xml";
+    return NextResponse.rewrite(url);
   }
 
   const pathLocale = pathname.split("/")[1];
@@ -35,6 +43,6 @@ export function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    "/((?!api|_next/static|_next/image|assets|images|robots.txt|sitemap.xml|favicon.ico|googled80e1742b77bf486.html).*)",
+    "/((?!api|_next/static|_next/image|assets|images|fonts|locales).*)",
   ],
 };
