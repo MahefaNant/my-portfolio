@@ -42,6 +42,7 @@ const PortfolioFeatureCard = () => {
             <li>{t("portfolio.language")} <strong>English / French</strong></li>
             <li>{t("portfolio.theme")} <strong>mode Black & White</strong></li>
             <li>{t("portfolio.animation")} <strong>Framer Motion</strong></li>
+            <li><strong>{"SEO (Search Engine Optimization)"} </strong></li>
           </ul>
         </CardContent>
       </Card>
