@@ -8,25 +8,23 @@ function isSupportedLocale(locale: string): locale is SupportedLocale {
   return supportedLngs.includes(locale as SupportedLocale);
 }
 
-const STATIC_PATHS = [
-  "/sitemap.xml",
-  "/robots.txt",
-  "/favicon.ico",
-  "/googled80e1742b77bf486.html"
-];
-
-const STATIC_EXTENSIONS = [
-  ".png", ".jpg", ".jpeg", ".webp",
-  ".json", ".ico", ".svg", ".woff", ".woff2"
-];
-
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
-  const url = request.nextUrl.clone();
 
   if (pathname === "/sitemap.xml") {
     return NextResponse.next();
   }
+
+  const STATIC_PATHS = [
+    "/robots.txt",
+    "/favicon.ico", 
+    "/googled80e1742b77bf486.html"
+  ];
+
+  const STATIC_EXTENSIONS = [
+    ".png", ".jpg", ".jpeg", ".webp",
+    ".json", ".ico", ".svg", ".woff", ".woff2"
+  ];
 
   const isStaticPath = STATIC_PATHS.includes(pathname);
   const isStaticExtension = STATIC_EXTENSIONS.some(ext => pathname.endsWith(ext));
@@ -37,31 +35,22 @@ export function middleware(request: NextRequest) {
     pathname.includes("/api/") ||
     isStaticFile
   ) {
-    const response = NextResponse.next();
-    if (isStaticFile) {
-      response.headers.set("Cache-Control", "public, max-age=31536000, immutable");
-    }
-    return response;
-  }
-
-  const pathLocale = pathname.split("/")[1];
-
-  if (STATIC_PATHS.includes(`/${pathLocale}`)) {
     return NextResponse.next();
   }
+
+  const url = request.nextUrl.clone();
+  const pathLocale = pathname.split("/")[1];
   
   if (!isSupportedLocale(pathLocale)) {
     url.pathname = `/${defaultLocale}${pathname}`;
     return NextResponse.redirect(url);
   }
 
-  const response = NextResponse.next();
-  response.headers.set("X-Content-Type-Options", "nosniff");
-  return response;
+  return NextResponse.next();
 }
 
 export const config = {
   matcher: [
-    "/((?!api|_next/static|_next/image|assets|images|fonts|locales|sitemap.xml|robots.txt).*)",
+    "/((?!api|_next/static|_next/image|assets|images|fonts|locales|sitemap.xml).*)",
   ],
 };

@@ -16,11 +16,7 @@ const nextConfig = {
           {
             key: "Content-Type",
             value: "application/xml; charset=utf-8"
-          },
-          {
-            key: "X-Content-Type-Options",
-            value: "nosniff"
-          }
+          }    
         ]
       }
     ];
@@ -29,15 +25,7 @@ const nextConfig = {
   async rewrites() {
     return [
       {
-        source: "/sitemap.xml",
-        destination: "/sitemap.xml",
-      },
-      {
-        source: "/en/sitemap.xml",
-        destination: "/sitemap.xml",
-      },
-      {
-        source: "/fr/sitemap.xml",
+        source: "/:locale/sitemap.xml",
         destination: "/sitemap.xml",
       }
     ];
