@@ -4,7 +4,7 @@ export async function GET() {
   const robotsTxt = `User-agent: *
 Allow: /
 
-Sitemap: ${baseUrl}/sitemap.xml`;
+Sitemap: ${baseUrl}/sitemap.xml?refresh=1`;
 
   return new Response(robotsTxt, {
     headers: {

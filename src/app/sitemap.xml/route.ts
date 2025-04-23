@@ -38,7 +38,9 @@ export async function GET() {
   return new Response(sitemap, {
     headers: {
       "Content-Type": "application/xml",
-      "Cache-Control": "public, max-age=86400, stale-while-revalidate"
+      "Cache-Control": "public, max-age=86400, stale-while-revalidate",
+      "Pragma": "no-cache",
+      "Expires": "0"
     },
   });
 }
