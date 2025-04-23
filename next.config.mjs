@@ -35,6 +35,10 @@ const nextConfig = {
       {
         source: "/en/sitemap.xml",
         destination: "/sitemap.xml",
+      },
+      {
+        source: "/fr/sitemap.xml",
+        destination: "/sitemap.xml",
       }
     ];
   },

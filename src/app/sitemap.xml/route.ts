@@ -1,4 +1,4 @@
-
+//sitemap.xml.toute.ts
 export async function GET() {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://mahefa.vercel.app/";
   
@@ -38,6 +38,7 @@ export async function GET() {
   return new Response(sitemap, {
     headers: {
       "Content-Type": "application/xml",
+      "Cache-Control": "public, max-age=86400, stale-while-revalidate=43200"
     },
   });
 }

@@ -24,12 +24,8 @@ export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const url = request.nextUrl.clone();
 
-  if (pathname === "/en/sitemap.xml") {
-    url.pathname = "/sitemap.xml";
-    const response = NextResponse.rewrite(url);
-    response.headers.set("Content-Type", "application/xml");
-    response.headers.set("Cache-Control", "public, max-age=31536000, immutable");
-    return response;
+  if (pathname === "/sitemap.xml") {
+    return NextResponse.next();
   }
 
   const isStaticPath = STATIC_PATHS.includes(pathname);
@@ -49,6 +45,10 @@ export function middleware(request: NextRequest) {
   }
 
   const pathLocale = pathname.split("/")[1];
+
+  if (STATIC_PATHS.includes(`/${pathLocale}`)) {
+    return NextResponse.next();
+  }
   
   if (!isSupportedLocale(pathLocale)) {
     url.pathname = `/${defaultLocale}${pathname}`;
@@ -62,6 +62,6 @@ export function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    "/((?!api|_next/static|_next/image|assets|images|fonts|locales).*)",
+    "/((?!api|_next/static|_next/image|assets|images|fonts|locales|sitemap.xml|robots.txt).*)",
   ],
 };
