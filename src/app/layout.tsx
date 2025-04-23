@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     images: [{
-      url: "/statis/images/portfolio-screen.png",
+      url: "/static/images/portfolio-screen.png",
       width: 1200,
       height: 630,
       alt: "Mahefa Nantenaina - Expert Développeur",
